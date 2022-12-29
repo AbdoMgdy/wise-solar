@@ -1,0 +1,159 @@
+/*#topLogo {
+    align-items: center;
+    padding: 16px;
+    width: 100%;
+    display: flex;
+    border-bottom: 1px solid #ddd;
+}
+#topLogo #logo {
+    background: url(../images/logo.png);
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: auto 35px;
+    height: 50px;
+    padding: 0;
+    width: 130px;
+}
+#topLogo h3 {
+    border-left: 1px solid #d8d8d8;
+    color: #666;
+    display: inline-block;
+    flex: 1 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1;
+    margin: 0 0 0 1em;
+    padding: 0 0 0 1em;
+    text-align: left;
+    text-shadow: none;
+}
+
+label {
+    font-weight: 700;
+    font-size: 24px;
+    color: #222;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    line-height: 1.4;
+    display: block;
+}
+#birthdate, #weight {
+    text-align: center;
+}
+
+@media (min-width: 799px)
+.input--text {
+    display: table;
+    min-width: 0;
+    width: auto;
+}
+.input--text {
+    width: 100%;
+}
+@media (min-width: 799px)
+.input--text, input {
+    clear: both;
+    font-size: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    text-align: left;
+    width: 300px;
+}
+.input--text, input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: rgba(0,0,0,.05);
+    border: 1px solid #d8d8d8;
+    border-radius: 3px;
+    box-sizing: border-box;
+    display: block;
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-top: 10px;
+    padding: 24px 16px;
+    width: 100%;
+}
+#birthMonth {
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+}
+.input--inner {
+    background: none;
+    border: none;
+    color: inherit;
+    display: inline-block;
+    margin: 0;
+    min-width: 50px;
+    padding: 0;
+    text-align: center;
+    width: 50px;
+}
+@media (min-width: 799px)
+.input--text, input {
+    clear: both;
+    font-size: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    text-align: left;
+    width: 300px;
+}
+.input--text, input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: rgba(0,0,0,.05);
+    border: 1px solid #d8d8d8;
+    border-radius: 3px;
+    box-sizing: border-box;
+    display: inline-block;
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-top: 10px;
+    padding: 24px 16px;
+    width: auto;
+}
+.picker {
+    grid-gap: 4px;
+    display: grid;
+    margin-top: 1em;
+    grid-template-columns: repeat(4,minmax(0,1fr));
+}
+.picker {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 25px;
+    text-align: left;
+}
+
+.picker>li {
+    align-items: center;
+    background: rgba(14,117,188,.075);
+    border: 2px solid rgba(14,117,188,0);
+    border-radius: 4px;
+    color: #0e75bc;
+    cursor: pointer;
+    display: flex;
+    font-size: 1.25rem;
+    font-weight: 700;
+    justify-content: center;
+    padding: 24px;
+    text-align: center;
+    transition: .15s;
+    white-space: normal;
+}
+.oneWide {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+}
+
+.wazard-main h2 {
+    color: #2a2a2a;
+    display: block;
+    font-size: 38px;
+    font-weight: 700;
+    margin-bottom: 28px;
+    padding: 8px 8px 8px 0;
+    text-transform: capitalize;
+    width: 100%;
+}*/

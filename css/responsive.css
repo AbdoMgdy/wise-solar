@@ -1,0 +1,272 @@
+@media screen and (max-width: 479px){
+	.government-profit .table li .value {
+	    float: none;
+	    display: block;
+	}
+	.wizard__main .btn-main {
+	    width: 100%;
+	}
+	.solar-cost-data ul li .btn-main {
+		width: 280px;
+	}
+	.wizard__main .sunlight-box > a .theme-title {
+	    font-size: 15px;
+	}
+}
+@media screen and (max-width: 575px){
+	.hero-inner h1,
+	.wizard__box .page-title h2 {
+	    font-size: 24px !important;
+	}
+	.hero-inner h4 {
+	    font-size: 18px;
+	    margin-bottom: 6px;
+	}
+	.hero-inner h5 {
+	    font-size: 18px;
+	}
+	.hero-inner .form-list .form-group .form-control {
+		text-align: center;
+	}
+	.hero-inner .form-list {
+	    flex-wrap: wrap;
+	}
+	.hero-inner .form-list .form-group {
+	    width: 100%;
+	}
+	.hero-inner .form-list .btn-main {
+	    width: 100%;
+	    margin-top: 12px;
+	}
+	.how-it-works .work-process {
+	    width: calc(100% - 30px);
+	}
+}
+@media screen and (max-width: 767px) and (min-width: 576px){
+	.how-it-works .work-process {
+	    width: calc(50% - 30px);
+	}
+}
+@media screen and (max-width: 767px){
+	.sliderLegend, .sliderLegend .sliderLegendItem--start, .sliderLegend .sliderLegendItem--end {
+	    position: static;
+	    display: flex;
+	    justify-content: space-between;
+	}
+	.hero-inner .list-style li {
+	    text-align: left;
+	    display: block;
+	}
+	.page-paddings,
+	.page-background {
+	    padding: 40px 0px;
+	}
+	.header-main {
+	    position: static;
+	}
+	.hero-banner .d-table, .hero-banner .d-table-cell {
+	    display: block !important;
+	    height: auto;
+	}
+	.hero-banner .d-table {
+	    padding: 30px 0px;
+	}
+	.hero-inner h1,
+	.wizard__box .page-title h2 {
+	    font-size: 32px;
+	    line-height: 1.6;
+	}
+	.government-left {
+	    max-width: 360px;
+	    margin: 0px auto 50px;
+	}
+	.government-left::before {
+	    left: 20px;
+	}
+	.page-title h2 {
+	    font-size: 26px;
+	}
+	.government-profit h4 {
+	    font-size: 18px;
+	}
+	.solar-cost-data ul {
+	    flex-wrap: wrap;
+	    margin: 0px;
+	}
+	.solar-info .content {
+	    margin-bottom: 30px;
+	}
+	.site-footer .site-footer-main {
+	    flex-wrap: wrap;
+	    text-align: center;
+	}
+	.site-footer .site-footer-main div {
+	    width: 100%;
+	}
+	.site-footer .site-footer-main .logo {
+	    margin: 12px auto;
+	}
+	.form-group.mt-20 {
+	    margin-top: 20px;
+	}
+	.contact-box {
+	    padding: 20px 20px;
+	}
+	.contact-info {
+	    padding: 20px 20px;
+	    margin-top: 30px;
+	    height: auto;
+	}
+	.testimonial-section .testimonial,
+	.yell-wrapper .yell {
+		display: block;
+	}
+	.yell-wrapper .yell .credit-score {
+		text-align: center;
+	}
+	.yell-wrapper .body {
+		margin: 30px 0px 0px;
+		text-align: center;
+	}
+	.testimonial .item {
+		width: calc(100% - 30px);
+	}
+}
+@media screen and (max-width: 991px){
+	.wizard__box .page-title p {
+	    font-size: 18px;
+	}
+	.main-wrapper.wizard-box .hero-banner {
+	    padding: 30px 0px;
+	}
+	.s-py-half .form-block {
+	    margin-top: 30px;
+	}
+}
+@media screen and (min-width: 768px) {
+		
+}
+@media screen and (max-width: 991px) and (min-width: 768px){
+	.md-none {
+	    display: none;
+	}
+	.header-main {
+	    position: static;
+	}
+	.hero-banner .d-table, 
+	.hero-banner .d-table-cell {
+	    height: auto;
+	    display: block !important;
+	}
+	.hero-banner .d-table {
+	    padding: 30px 0px;
+	}
+	.hero-inner h1,
+	.wizard__box .page-title h2 {
+	    font-size: 32px;
+	}
+	.range-slider {
+	    max-width: 400px;
+	}
+	.government-data h2 span {
+	    font-size: 30px;
+	}
+	.hero-inner .list-style li {
+	    font-size: 16px;
+	}
+	.government-profit .table li {
+	    font-size: 14px;
+	    padding-bottom: 8px;
+	}
+	.hero-inner h5 {
+		font-weight: 500;
+	}
+	.page-title h2 {
+	    font-size: 30px;
+	}
+	.government-left::before {
+		left: 20px;
+	}
+	.how-it-works .work-process {
+	    width: calc(50% - 30px);
+	}
+	.going-solar {
+		text-align: center;
+	}
+	.going-solar-media {
+	    text-align: center;
+	}
+	.solar-cost-data ul {
+	    flex-wrap: wrap;
+	}
+	.site-footer .site-footer-main {
+	    flex-wrap: wrap;
+	    text-align: center;
+	}
+	.site-footer .site-footer-main div {
+	    width: 100%;
+	}
+	.site-footer .site-footer-main .logo {
+	    margin: 12px auto;
+	}
+	.contact-info {
+	    padding: 30px;
+	    margin-top: 30px;
+	    height: auto;
+	}
+	.testimonial .item {
+		width: calc(50% - 30px);
+	}
+}
+@media screen and (max-width: 1199px) and (min-width: 992px){
+	.header-main {
+	    position: static;
+	}
+	.hero-banner .d-table, 
+	.hero-banner .d-table-cell {
+	    height: auto;
+	    display: block !important;
+	}
+	.hero-banner .d-table {
+	    padding: 40px 0px;
+	}
+	.hero-inner h1,
+	.wizard__box .page-title h2 {
+	    font-size: 40px;
+	}
+	.page-title h2 {
+	    font-size: 34px;
+	}
+	.how-it-works .work-process {
+	    width: calc(33.33% - 30px);
+	}
+	.contact-info .page-title h2 {
+	    font-size: 20px;
+	}
+	.testimonial .item {
+		width: calc(50% - 30px);
+	}
+}
+@media screen and (max-width: 1850px) and (min-width: 1200px){
+	.header-main {
+	    position: static;
+	}
+	/*.hero-banner .d-table, 
+	.hero-banner .d-table-cell {
+	    height: auto;
+	    display: block !important;
+	}*/
+	.hero-banner .d-table {
+	    padding: 40px 0px;
+	}
+	/*.hero-inner h1,
+	.wizard__box .page-title h2 {
+	    font-size: 40px;
+	}*/
+	.page-title h2 {
+	    font-size: 34px;
+	}
+}
+@media screen and (min-width: 1200px){
+	
+}
