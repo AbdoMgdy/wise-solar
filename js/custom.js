@@ -1,3 +1,4 @@
+//localStorage.clear();
 $(window).on("load", function () {
  
   var range = $("#range").attr("value");
@@ -160,7 +161,7 @@ slideWidth = ($(this).val() * 100) /e.target.max;
   
     $(".next-step").click(async function (e) {
       // console.log('called');
-    //   console.log(e);
+       //console.log(e);
       let checkBtnTrigger = e.currentTarget.hasAttribute('data-zip-btn')
       if(checkBtnTrigger){
         let Btn = document.querySelector('[data-zip-btn]');
@@ -170,7 +171,7 @@ slideWidth = ($(this).val() * 100) /e.target.max;
         
         let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
 
-        console.log(getLocalStorage.zipCode);
+        console.log(getLocalStorage);
   
         const URL = "https://api.powersolarsavings.com/api/v1/power-solar/utility";
         // const URL = "http://localhost:7000/api/v1/power-solar/utility";
@@ -180,7 +181,7 @@ slideWidth = ($(this).val() * 100) /e.target.max;
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({zip: getLocalStorage.zipCode}),
+          body: JSON.stringify({zip: getLocalStorage.zip_code}),
         };
       
         const response = await fetch(URL, options);
@@ -207,39 +208,34 @@ slideWidth = ($(this).val() * 100) /e.target.max;
         data.data.forEach(utility => {
           utilities += `<div class="col-sm-6 col-12">
               <div class="form-group">
-                <a href="javascript:void(0);" class="btn-main next-tep w-100">${utility.utility_name}</a>
+                <a href="javascript:void(0);" class="btn-main next-tep w-100 utilityProvider">${utility.utility_name}</a>
               </div>
           </div>`
         })
 
         utilities += `<div class="col-sm-6 col-12">
         <div class="form-group">
-           <a href="javascript:void(0);" class="btn-main next-tep w-100">Other</a>
+           <a href="javascript:void(0);" class="btn-main next-tep w-100 utilityProvider">Other</a>
         </div>
      </div>`
 
-        // console.log(document.querySelector('p[data-zip-error] + .wizard__main .row'));
+         //console.log(document.querySelector('p[data-zip-error] + .wizard__main .row'));
 
         document.querySelector('p[data-zip-error] + .wizard__main .row').innerHTML = utilities;
-
-        // console.log(utilities);
-
-
-
+        
+        //console.log(utilities);
         var $active = $(".wizard .nav-tabs li a.active");
         $active.parent().next().children().removeClass("disabled");
         $active.parent().addClass("done");
         nextTab($active);
-
+        
         $(".next-tep").click(async function (e) {
           var $active = $(".wizard .nav-tabs li a.active");
           $active.parent().next().children().removeClass("disabled");
           $active.parent().addClass("done");
           nextTab($active);
         })
-
-
-        // console.log(data);
+        //console.log(data);
         // alert('yes')
       }else{
         var $active = $(".wizard .nav-tabs li a.active");
@@ -247,7 +243,18 @@ slideWidth = ($(this).val() * 100) /e.target.max;
         $active.parent().addClass("done");
         nextTab($active);
       }
-      
+        
+        if (document.querySelector(".utilityProvider")) {
+          document.querySelectorAll(".utilityProvider").forEach((ele) => {
+            ele.addEventListener("click", (e) => {
+              let selectedOption = e.currentTarget.innerText;
+              let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
+              getLocalStorage["utility_provider"] = selectedOption;
+              localStorage.setItem("power-solar-data", JSON.stringify(getLocalStorage));
+              // console.log('getLocalStorage---',getLocalStorage);
+            });
+          });
+        }
     });
   
     $(".prev-step").click(function (e) {
@@ -280,16 +287,16 @@ slideWidth = ($(this).val() * 100) /e.target.max;
         $(".phoneNumber_errormsg").show();
         return false;
       }else{
-        window.location.href = 'quote-report.html'
+        onSubmitData();
       }
     }
     $(elem).parent().next().find('a[data-toggle="tab"]').click();
   }
   function prevTab(elem) {
-    
+  
     $(elem).parent().prev().find('a[data-toggle="tab"]').click();
   }
-  $("#zipCode, #phoneNumber")
+  $("#zip_code, #phoneNumber")
     .unbind("keyup change input paste")
     .bind("keyup change input paste", function (e) {
       var $this = $(this);
@@ -378,16 +385,31 @@ slideWidth = ($(this).val() * 100) /e.target.max;
   });
   
   let data = {
-    homeSqFoot: "",
-    zipCode: "",
-    avgBill: "",
-    utilityProvider: "",
-    address: "",
-    roofSunlight: "",
-    email: "",
-    firstName: "",
-    lastName: "",
-    phone: "",
+    lp_campaign_id: "11036",
+    //lp_supplier_id: "22807",
+    lp_campaign_key: "yxp3uemdcrpy1",
+    //lp_action: "test",
+    zip_code: "",
+    state: "NY",
+    //email: "",
+    email_address: "",
+    user_agent: navigator.userAgent,
+    ip_address: "",
+    first_name: "",
+    last_name: "",
+    phone_home: "",
+    lp_s1: "",
+    homeowner: "Yes",
+    monthly_bill: "",
+    credit: "Excellent",
+    landing_page_url: window.location.pathname,
+    project_timeframe: "Immediate",
+    roof_shade: "",
+    landing_page: "lp_1",
+    tcpa_text: "full_phone_text_dnc_message",
+    tcpa_optin: "",
+    utility_provider: ""
+    //jornaya_lead_id: "4XYZ78B9-0CDC-43A7-98EA-2B680A5313A2",
   };
   
   let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
@@ -395,6 +417,37 @@ slideWidth = ($(this).val() * 100) /e.target.max;
   if (!getLocalStorage) {
     localStorage.setItem("power-solar-data", JSON.stringify(data));
   }
+
+  getIP();
+
+  function getIP() {
+    var range = $("#range").val();
+    if (range) {
+      let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
+      var monthly_bill= range;
+      if (monthly_bill < 100) {
+        getLocalStorage["monthly_bill"] = "Less than $100";
+      } else if (monthly_bill > 100 && monthly_bill < 200) {
+        getLocalStorage["monthly_bill"] = "From $100 to $200";
+      } else if (monthly_bill > 200 && monthly_bill < 300) {
+        getLocalStorage["monthly_bill"] = "From $200 to $300";
+      } else {
+        getLocalStorage["monthly_bill"] = "More than $300";
+      }      
+      localStorage.setItem("power-solar-data", JSON.stringify(getLocalStorage));
+
+      getLocalStorage["electric_bill"] = range;
+      localStorage.setItem("power-solar-data", JSON.stringify(getLocalStorage));
+    }
+
+    $.getJSON("https://api.ipify.org?format=json", function(data) {
+      let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
+      getLocalStorage["ip_address"] = data.ip;
+      localStorage.setItem("power-solar-data", JSON.stringify(getLocalStorage));
+      return data.ip;
+    });
+  }
+
 
   //========= validations ==========
   if(document.querySelector('#zipCodeForm')){
@@ -441,7 +494,7 @@ slideWidth = ($(this).val() * 100) /e.target.max;
       localStorage.setItem("power-solar-data", JSON.stringify(getLocalStorage));
 
       console.log(getLocalStorage);
-
+      
       form.querySelector('a.next-step').click();
 
       console.log(e.currentTarget);
@@ -474,18 +527,19 @@ slideWidth = ($(this).val() * 100) /e.target.max;
   if (document.querySelector(".homeSqFootRange")) {
     document.querySelector(".homeSqFootRange").addEventListener("input", (e) => {
       let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
+      console.log(e.currentTarget.value);
       getLocalStorage["homeSqFoot"] = e.currentTarget.value;
       localStorage.setItem("power-solar-data", JSON.stringify(getLocalStorage));
     });
   }
   
-  if (document.getElementById("zipCode")) {
-    document.getElementById("zipCode").addEventListener("keyup", (e) => {
+  if (document.getElementById("zip_code")) {
+    document.getElementById("zip_code").addEventListener("keyup", (e) => {
       let form = e.currentTarget.closest('form');
       form.querySelector('span').innerText = ''
-      // console.log(JSON.parse(localStorage.getItem("power-solar-data")));
       let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
-      getLocalStorage["zipCode"] = e.currentTarget.value;
+      console.log(e.currentTarget.value);
+      getLocalStorage["zip_code"] = e.currentTarget.value;
       localStorage.setItem("power-solar-data", JSON.stringify(getLocalStorage));
     });
   }
@@ -493,7 +547,9 @@ slideWidth = ($(this).val() * 100) /e.target.max;
   if (document.querySelector(".avgBillRange")) {
     document.querySelector(".avgBillRange").addEventListener("input", (e) => {
       let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
-      getLocalStorage["avgBill"] = e.currentTarget.value;
+      console.log('here', e.currentTarget.value);
+      //getLocalStorage["avgBill"] = e.currentTarget.value;
+      getLocalStorage["monthly_bill"] = e.currentTarget.value;
       localStorage.setItem("power-solar-data", JSON.stringify(getLocalStorage));
     });
   }
@@ -501,20 +557,29 @@ slideWidth = ($(this).val() * 100) /e.target.max;
   if (document.querySelector(".utilityProvider")) {
     document.querySelectorAll(".utilityProvider").forEach((ele) => {
       ele.addEventListener("click", (e) => {
+        console.log('utilityProvider');
         let selectedOption = e.currentTarget.innerText;
         let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
-        getLocalStorage["utilityProvider"] = selectedOption;
+        console.log('here', getLocalStorage);
+        getLocalStorage["utility_provider"] = selectedOption;
         localStorage.setItem("power-solar-data", JSON.stringify(getLocalStorage));
       });
     });
   }
-  
+
   if (document.querySelector(".roofSunlight")) {
     document.querySelectorAll(".roofSunlight").forEach((ele) => {
       ele.addEventListener("click", (e) => {
         let selectedOption = e.currentTarget.querySelector("h3").innerText;
         let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
-        getLocalStorage["roofSunlight"] = selectedOption;
+
+        var roof_shade= selectedOption;
+        
+        if (roof_shade == 'Full Sunlight') {
+          getLocalStorage["roof_shade"] = "Not shaded";
+        } else if (roof_shade == 'Some Shade' || roof_shade == 'Uncertain' || roof_shade == 'Severe Shade') {
+          getLocalStorage["roof_shade"] = "Slightly shaded";
+        }
         localStorage.setItem("power-solar-data", JSON.stringify(getLocalStorage));
       });
     });
@@ -523,7 +588,7 @@ slideWidth = ($(this).val() * 100) /e.target.max;
   if (document.querySelector(".emailInp")) {
     document.querySelector(".emailInp").addEventListener("keyup", (e) => {
       let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
-      getLocalStorage["email"] = e.currentTarget.value;
+      getLocalStorage["email_address"] = e.currentTarget.value;
       localStorage.setItem("power-solar-data", JSON.stringify(getLocalStorage));
     });
   }
@@ -531,7 +596,7 @@ slideWidth = ($(this).val() * 100) /e.target.max;
   if (document.querySelector(".firstNameInp")) {
     document.querySelector(".firstNameInp").addEventListener("keyup", (e) => {
       let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
-      getLocalStorage["firstName"] = e.currentTarget.value;
+      getLocalStorage["first_name"] = e.currentTarget.value;
       localStorage.setItem("power-solar-data", JSON.stringify(getLocalStorage));
     });
   }
@@ -539,7 +604,7 @@ slideWidth = ($(this).val() * 100) /e.target.max;
   if (document.querySelector(".lastNameInp")) {
     document.querySelector(".lastNameInp").addEventListener("keyup", (e) => {
       let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
-      getLocalStorage["lastName"] = e.currentTarget.value;
+      getLocalStorage["last_name"] = e.currentTarget.value;
       localStorage.setItem("power-solar-data", JSON.stringify(getLocalStorage));
     });
   }
@@ -547,16 +612,20 @@ slideWidth = ($(this).val() * 100) /e.target.max;
   if (document.getElementById("phone")) {
     document.getElementById("phone").addEventListener("keyup", (e) => {
       let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
-      getLocalStorage["phone"] = e.currentTarget.value;
+      getLocalStorage["phone_home"] = e.currentTarget.value;
       localStorage.setItem("power-solar-data", JSON.stringify(getLocalStorage));
     });
   }
   
   const onSubmitData = async () => {
+
     let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
-  
-    const URL = "https://api.usdirectautoinsurance.com/api/v1/power-solar/create";
-  
+    console.log(getLocalStorage);
+
+    //const URL = "https://api.usdirectautoinsurance.com/api/v1/power-solar/create";
+    
+    const URL = "https://leadgenmedia.leadspediatrack.com/post.do";
+
     const options = {
       method: "POST",
       headers: {
