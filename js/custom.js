@@ -358,6 +358,7 @@ $(".solar-cost-data .btn-main").click(function () {
     lp_campaign_key: "y39HV4CJ6GFWwxq7vTmB",
     lp_s1: "",
     lp_test: 1,
+    lp_response: "JSON",
     //lp_action: "test",
     first_name: "",
     last_name: "",
