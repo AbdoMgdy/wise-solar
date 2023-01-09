@@ -14,27 +14,13 @@
       <link href="fontawesome/css/all.min.css" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100;300;400;500;700;900&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
       <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
-      <!-- Google tag (gtag.js) --> 
-      <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11058130704"></script> <script> 
-         window.dataLayer = window.dataLayer || []; 
-         function gtag(){
-            dataLayer.push(arguments);
-         } 
-         gtag('js', new Date()); 
-         gtag('config', 'AW-11058130704'); 
-      </script>
-<script>
-   // function initAutocomplete() {
-   //    new google.maps.places.Autocomplete(
-   //           (document.getElementById('pac-input')),
-   //           {types: ['geocode']}
-   //    );
-   // }
-   </script>
-   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASQy-lj_qEU3g4G3D-J1jW00jagKYq91M&libraries=places&callback=initAutocomplete"
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASQy-lj_qEU3g4G3D-J1jW00jagKYq91M&libraries=places&callback=initAutocomplete"
                    async defer></script>
    </head>
    <body>
+      <div id="loading">
+         <img id="loading-image" src="images/loader.gif" alt="Loading..." />
+      </div>
       <div class="main-wrapper wizard-box">
          <div class="d-table w-100">
             <div class="d-table-cell">
@@ -395,7 +381,7 @@
                <div class="col-sm-12">
                   <div class="site-footer-main d-flex justify-content-between align-items-center">
                      <div class="copyright">
-                        <p>© 2022 Wise Solar All Rights Reserved.</p>
+                        <p>© 2023 Wise Solar All Rights Reserved.</p>
                      </div>
                      <div class="logo"><a href="index.html"><img src="images/logo.png" alt=""></a></div>
                      <div class="links">

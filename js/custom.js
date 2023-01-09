@@ -573,7 +573,6 @@ $(".solar-cost-data .btn-main").click(function () {
 
     let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
     console.log('getLocalStorage---->',getLocalStorage);
-    return false;
 
     //const URL = "https://api.usdirectautoinsurance.com/api/v1/power-solar/create";
     
@@ -590,7 +589,9 @@ $(".solar-cost-data .btn-main").click(function () {
     const response = await fetch(URL, options);
   
     const data = await response.json();
-  
+    console.log('data---->',data);
+    return false;
+
     if (data && data.status) {
       // localStorage.clear();
       window.location.href = "quote-report.html";
@@ -608,12 +609,12 @@ $(".solar-cost-data .btn-main").click(function () {
       let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
       
       let obj = {
-        firstname: getLocalStorage.firstName,
-        lastname: getLocalStorage.lastName,
-        email: getLocalStorage.email,
-        phone: getLocalStorage.phone,
+        firstname: getLocalStorage.first_name,
+        lastname: getLocalStorage.last_name,
+        email: getLocalStorage.email_address,
+        phone: getLocalStorage.phone_home,
         address: getLocalStorage.address.replaceAll(' ', '+'),
-        zipcode: getLocalStorage.zipCode
+        zipcode: getLocalStorage.zip_code
       }
 
       let queryString = ''
@@ -625,7 +626,8 @@ $(".solar-cost-data .btn-main").click(function () {
       }
 
       let a = document.createElement('a');
-      a.setAttribute('href', `https://secure.rspcdn.com/xprr/red/PID/12032/SID/sid_here?${queryString}`)
+      
+      a.setAttribute('href', `https://secure.rspcdn.com/xprr/red/PID/12049/SID/sid_here?${queryString}`)
       a.setAttribute('target', '_blank');
 
       a.click();
