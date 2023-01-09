@@ -23,7 +23,6 @@ const getGeo = async() => {
     jsonpCallback: "callback",
     dataType: "jsonp",
     success: function(location) {
-      console.log('location----',location);
       $('.city').html(location.city);
       return location.city;
     }
