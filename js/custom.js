@@ -23,8 +23,8 @@ const getGeo = async() => {
     jsonpCallback: "callback",
     dataType: "jsonp",
     success: function(location) {
-      $('.city').html(location.city);
-      return location.city;
+      $('.city').html(location.state);
+      return location.state;
     }
   });
 }
@@ -577,14 +577,13 @@ $(".solar-cost-data .btn-main").click(function () {
     console.log('getLocalStorage---->',getLocalStorage);
 
     //const URL = "https://api.usdirectautoinsurance.com/api/v1/power-solar/create";
-    
     const URL = "https://leadgenmedia.leadspediatrack.com/post.do";
 
     const options = {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      // headers: {
+      //   "Content-Type": "application/json",
+      // },
       body: JSON.stringify(getLocalStorage),
     };
   
