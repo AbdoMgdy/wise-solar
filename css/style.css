@@ -204,7 +204,7 @@ p:last-child {
     margin-bottom: 0px;
 }
 p > a {
-    color: #f7c51d !important;
+    color: #000;
     font-weight: 600;
 }
 .page-title {
