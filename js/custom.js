@@ -374,11 +374,12 @@ $(".solar-cost-data .btn-main").click(function () {
     landing_page_url: window.location.pathname,
     user_agent: navigator.userAgent,
     monthly_bill: "",
-    tcpa_text: "full_phone_text_dnc_message",
-    tcpa_optin: "",
+    tcpa_text: "By clicking the View My Savings button, you authorize www.powersolarsavings.com and up to 4 solar partners to call you and send you pre-recorded messages and text messages at the number you entered above, using an autodialer, with offers about their products or services, even if your phone number is on any national or state Do Not Call list. Message and data rates may apply. Your consent here is not based on a condition of purchase",
+    tcpa_optin: "Yes",
     utility_provider: "",
     project_timeframe: "Immediate",
-    //jornaya_lead_id: "4XYZ78B9-0CDC-43A7-98EA-2B680A5313A2",
+    jornaya_lead_id: "4XYZ78B9-0CDC-43A7-98EA-2B680A5313A2",
+    trusted_form_cert_id: "12233",
   };
   
   let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
@@ -574,26 +575,55 @@ $(".solar-cost-data .btn-main").click(function () {
   const onSubmitData = async () => {
 
     let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
-    console.log('getLocalStorage---->',getLocalStorage);
+
+    let obj = {
+      lp_campaign_id: getLocalStorage.lp_campaign_id,
+      lp_campaign_key: getLocalStorage.lp_campaign_key,
+      first_name: getLocalStorage.first_name,
+      last_name: getLocalStorage.last_name,
+      phone_home: getLocalStorage.phone_home,
+      address: getLocalStorage.address,
+      city: getLocalStorage.city,
+      state: getLocalStorage.state,
+      zip_code: getLocalStorage.zip_code,
+      email_address: getLocalStorage.email_address,
+      monthy_bill: getLocalStorage.monthy_bill,
+      ip_address: getLocalStorage.ip_address,
+      credit: getLocalStorage.credit,
+      roof_shade: getLocalStorage.roof_shade,
+      homeowner: getLocalStorage.homeowner,
+      landing_page_url: getLocalStorage.landing_page_url,
+      user_agent: getLocalStorage.user_agent,
+      tcpa_text: getLocalStorage.tcpa_text,
+      tcpa_optin: getLocalStorage.tcpa_optin,
+      lp_response: "JSON",
+      utility_provider: getLocalStorage.utility_provider,
+      jornaya_lead_id: getLocalStorage.jornaya_lead_id,
+      trusted_form_cert_id: getLocalStorage.trusted_form_cert_id
+    }
+
+    let queryString = ''
+    for (key in obj){
+      queryString += `${key}=${obj[key]}`
+      if(key != 'trusted_form_cert_id'){
+        queryString += '&'
+      }
+    }
+
+    localStorage.setItem("power-solar-data", JSON.stringify(getLocalStorage));
 
     //const URL = "https://api.usdirectautoinsurance.com/api/v1/power-solar/create";
-    const URL = "https://leadgenmedia.leadspediatrack.com/post.do";
+    const URL = `https://leadgenmedia.leadspediatrack.com/post.do?${queryString}`;
 
     const options = {
-      method: "POST",
-      // headers: {
-      //   "Content-Type": "application/json",
-      // },
-      body: JSON.stringify(getLocalStorage),
+      method: "GET",
     };
   
     const response = await fetch(URL, options);
   
     const data = await response.json();
-    console.log('data---->',data);
-    return false;
 
-    if (data && data.status) {
+    if (data && data.result) {
       // localStorage.clear();
       window.location.href = "quote-report.html";
     }
