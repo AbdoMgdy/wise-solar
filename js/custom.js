@@ -371,9 +371,9 @@ $(".solar-cost-data .btn-main").click(function () {
     credit: "Excellent",
     roof_shade: "",
     homeowner: "Yes",
-    landing_page_url: window.location.pathname,
+    landing_page_url: window.location.href,
     user_agent: navigator.userAgent,
-    monthly_bill: "",
+    monthy_bill: "",
     tcpa_text: "By clicking the View My Savings button, you authorize www.powersolarsavings.com and up to 4 solar partners to call you and send you pre-recorded messages and text messages at the number you entered above, using an autodialer, with offers about their products or services, even if your phone number is on any national or state Do Not Call list. Message and data rates may apply. Your consent here is not based on a condition of purchase",
     tcpa_optin: "Yes",
     utility_provider: "",
@@ -394,19 +394,7 @@ $(".solar-cost-data .btn-main").click(function () {
     var range = $("#range").val();
     if (range) {
       let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
-      var monthly_bill= range;
-      if (monthly_bill < 100) {
-        getLocalStorage["monthly_bill"] = "Less than $100";
-      } else if (monthly_bill > 100 && monthly_bill < 200) {
-        getLocalStorage["monthly_bill"] = "From $100 to $200";
-      } else if (monthly_bill > 200 && monthly_bill < 300) {
-        getLocalStorage["monthly_bill"] = "From $200 to $300";
-      } else {
-        getLocalStorage["monthly_bill"] = "More than $300";
-      }      
-      localStorage.setItem("power-solar-data", JSON.stringify(getLocalStorage));
-
-      getLocalStorage["electric_bill"] = range;
+      getLocalStorage["monthy_bill"] = range;
       localStorage.setItem("power-solar-data", JSON.stringify(getLocalStorage));
     }
 
@@ -506,7 +494,7 @@ $(".solar-cost-data .btn-main").click(function () {
   if (document.querySelector(".avgBillRange")) {
     document.querySelector(".avgBillRange").addEventListener("input", (e) => {
       let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
-      getLocalStorage["monthly_bill"] = e.currentTarget.value;
+      getLocalStorage["monthy_bill"] = e.currentTarget.value;
       localStorage.setItem("power-solar-data", JSON.stringify(getLocalStorage));
     });
   }
@@ -532,8 +520,12 @@ $(".solar-cost-data .btn-main").click(function () {
         
         if (roof_shade == 'Full Sunlight') {
           getLocalStorage["roof_shade"] = "Not shaded";
-        } else if (roof_shade == 'Some Shade' || roof_shade == 'Uncertain' || roof_shade == 'Severe Shade') {
-          getLocalStorage["roof_shade"] = "Slightly shaded";
+        } else if (roof_shade == 'Some Shade') {
+          getLocalStorage["roof_shade"] = "Some Shade";
+        } else if (roof_shade == 'Uncertain') {
+          getLocalStorage["roof_shade"] = "Uncertain";
+        } else if (roof_shade == 'Severe Shade') {
+          getLocalStorage["roof_shade"] = "Severe Shade";
         }
         localStorage.setItem("power-solar-data", JSON.stringify(getLocalStorage));
       });
