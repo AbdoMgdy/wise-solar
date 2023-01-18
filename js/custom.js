@@ -589,6 +589,7 @@ $(".solar-cost-data .btn-main").click(function () {
       tcpa_text: getLocalStorage.tcpa_text,
       tcpa_optin: getLocalStorage.tcpa_optin,
       lp_response: "JSON",
+      project_timeframe: getLocalStorage.project_timeframe,
       utility_provider: getLocalStorage.utility_provider,
       jornaya_lead_id: getLocalStorage.jornaya_lead_id,
       trusted_form_cert_id: getLocalStorage.trusted_form_cert_id
@@ -614,6 +615,8 @@ $(".solar-cost-data .btn-main").click(function () {
     const response = await fetch(URL, options);
   
     const data = await response.json();
+    console.log('data----',data);
+    return false;
 
     if (data && data.result) {
       // localStorage.clear();
