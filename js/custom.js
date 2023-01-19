@@ -622,8 +622,6 @@ $(".solar-cost-data .btn-main").click(function () {
     const response = await fetch(URL, options);
   
     const data = await response.json();
-    console.log('data----',data);
-    return false;
 
     if (data && data.result) {
       // localStorage.clear();
