@@ -150,6 +150,9 @@ input[type=number] {
     background: var(--bs-black);
     color: #fff;
 }
+.company_names {
+    text-transform: uppercase;
+}
 .theme-title {
     font-size: 20px;
     color: #000;
@@ -234,7 +237,7 @@ p > a {
     color: #ccc;
 }
 .owl-nav button {
-    background-color: transparent; !important;
+    background-color: transparent !important;
     height: 45px;
     width: 45px;
     color: #2c3d8c !important;
