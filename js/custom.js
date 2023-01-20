@@ -368,7 +368,7 @@ $(".solar-cost-data .btn-main").click(function () {
     zip_code: "",
     email_address: "",
     ip_address: "",
-    credit: "Excellent",
+    credit: "Good",
     roof_shade: "",
     homeowner: "Yes",
     landing_page_url: window.location.href,
