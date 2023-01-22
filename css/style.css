@@ -212,7 +212,7 @@ p:last-child {
 }
 p > a {
     color: #000;
-    font-weight: 600;
+    /* font-weight: 600; */
 }
 .page-title {
     max-width: 820px;
