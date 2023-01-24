@@ -29,16 +29,28 @@ const getGeo = async() => {
   //   }
   // });
 
-  $.ajax({
-    url: "http://www.geoplugin.net/json.gp",
-    // jsonpCallback: "callback",
-    // dataType: "jsonp",
-    success: function(location) {
-      console.log('location---->>>>>',location);
-      $('.city').html(location.geoplugin_regionName);
-      return location.geoplugin_regionName;
-    }
-  });
+
+  const URL = "http://www.geoplugin.net/json.gp";
+
+  const options = {
+    method: "GET",
+    // referrerPolicy: "unsafe_url" 
+  };
+
+  const response = await fetch(URL, options);
+
+  const data = await response.json();
+  console.log('location---->>>>>',data);
+  // $.ajax({
+  //   url: "http://www.geoplugin.net/json.gp",
+  //   // jsonpCallback: "callback",
+  //   // dataType: "jsonp",
+  //   success: function(location) {
+  //     console.log('location---->>>>>',location);
+  //     $('.city').html(location.geoplugin_regionName);
+  //     return location.geoplugin_regionName;
+  //   }
+  // });
 }
 
 const con = getGeo();
