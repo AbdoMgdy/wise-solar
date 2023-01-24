@@ -29,28 +29,16 @@ const getGeo = async() => {
   //   }
   // });
 
-
-  const URL = "http://www.geoplugin.net/json.gp";
-
-  const options = {
-    method: "GET",
-    // referrerPolicy: "unsafe_url" 
-  };
-
-  const response = await fetch(URL, options);
-
-  const data = await response.json();
-  console.log('location---->>>>>',data);
-  // $.ajax({
-  //   url: "http://www.geoplugin.net/json.gp",
-  //   // jsonpCallback: "callback",
-  //   // dataType: "jsonp",
-  //   success: function(location) {
-  //     console.log('location---->>>>>',location);
-  //     $('.city').html(location.geoplugin_regionName);
-  //     return location.geoplugin_regionName;
-  //   }
-  // });
+  $.ajax({
+    url: "https://ipinfo.io?token=28226e67806240",
+    // jsonpCallback: "callback",
+    // dataType: "jsonp",
+    success: function(location) {
+      console.log('location---->>>>>',location);
+      $('.city').html(location.region);
+      return location.region;
+    }
+  });
 }
 
 const con = getGeo();
