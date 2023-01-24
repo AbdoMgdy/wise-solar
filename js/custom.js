@@ -18,14 +18,25 @@ $(window).on("load", function () {
 });
 
 const getGeo = async() => {
+  // $.ajax({
+  //   url: "https://geolocation-db.com/jsonp",
+  //   jsonpCallback: "callback",
+  //   dataType: "jsonp",
+  //   success: function(location) {
+  //     console.log('location----',location);
+  //     $('.city').html(location.state);
+  //     return location.state;
+  //   }
+  // });
+
   $.ajax({
-    url: "https://geolocation-db.com/jsonp",
-    jsonpCallback: "callback",
-    dataType: "jsonp",
+    url: "http://www.geoplugin.net/json.gp",
+    // jsonpCallback: "callback",
+    // dataType: "jsonp",
     success: function(location) {
-      console.log('location----',location);
-      $('.city').html(location.state);
-      return location.state;
+      console.log('location---->>>>>',location);
+      $('.city').html(location.geoplugin_regionName);
+      return location.geoplugin_regionName;
     }
   });
 }
