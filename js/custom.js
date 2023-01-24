@@ -31,8 +31,6 @@ const getGeo = async() => {
 
   $.ajax({
     url: "https://ipinfo.io?token=28226e67806240",
-    // jsonpCallback: "callback",
-    // dataType: "jsonp",
     success: function(location) {
       console.log('location---->>>>>',location);
       $('.city').html(location.region);
