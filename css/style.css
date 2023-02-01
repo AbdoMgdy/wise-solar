@@ -1102,6 +1102,8 @@ input[type="range"]::-moz-range-thumb {
 .phone-number {
     border-radius: 20px;
     font-weight: bold;
+    background-color: #fbc903;
+    border: #fbc903;
 }
 
 .phone-number:hover {
