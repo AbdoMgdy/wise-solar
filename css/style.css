@@ -1099,3 +1099,7 @@ input[type="range"]::-moz-range-thumb {
     z-index: 100;
 }
   
+.phone-number {
+    border-radius: 20px;
+    font-weight: bold;
+}
