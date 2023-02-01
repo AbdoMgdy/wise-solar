@@ -1103,3 +1103,9 @@ input[type="range"]::-moz-range-thumb {
     border-radius: 20px;
     font-weight: bold;
 }
+
+.phone-number:hover {
+    background-color: #078041;
+    border: 1px solid #078041;
+    color: #fff;
+}
