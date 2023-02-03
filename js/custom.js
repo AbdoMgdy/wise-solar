@@ -622,7 +622,7 @@ $(".solar-cost-data .btn-main").click(function () {
   const SolarFormWorkflow = async(data) => {
     data.lp_campaign_id= '63b6f613a6bd3';
     data.lp_campaign_key= 'y39HV4CJ6GFWwxq7vTmB';
-    // return leadspediaAPi(data);
+    return leadspediaAPi(data);
   }
 
   const leadspediaAPi = async(obj) => {
