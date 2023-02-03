@@ -376,7 +376,7 @@ $(".solar-cost-data .btn-main").click(function () {
     tcpa_optin: "Yes",
     utility_provider: "",
     project_timeframe: "Immediate",
-    jornaya_lead_id: "4XYZ78B9-0CDC-43A7-98EA-2B680A5313A2",
+    jornaya_lead_id: "",
     trusted_form_cert_id: "",
   };
   
@@ -492,6 +492,13 @@ $(".solar-cost-data .btn-main").click(function () {
       if (trustedForm) {
         let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
         getLocalStorage["trusted_form_cert_id"] = trustedForm;
+        localStorage.setItem("power-solar-data", JSON.stringify(getLocalStorage));
+      }
+
+      var jornaya = $("#leadid_token").val();
+      if (jornaya) {
+        let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
+        getLocalStorage["jornaya_lead_id"] = jornaya;
         localStorage.setItem("power-solar-data", JSON.stringify(getLocalStorage));
       }
     });
