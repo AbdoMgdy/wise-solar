@@ -605,12 +605,11 @@ $(".solar-cost-data .btn-main").click(function () {
     }
 
     ADTWorkFlow(obj);
-    let data = SolarFormWorkflow(obj);
-
-    if (data && data.result) {
+    SolarFormWorkflow(obj);
+    // if (data && data.result) {
       // localStorage.clear();
-      window.location.href = "quote-report.html";
-    }
+    window.location.href = "quote-report.html";
+    // }
   };
 
   const ADTWorkFlow = async(obj) => {
