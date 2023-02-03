@@ -615,9 +615,11 @@ $(".solar-cost-data .btn-main").click(function () {
   };
 
   const ADTWorkFlow = async(obj) => {
+    console.log('obj---',obj);
     obj.lp_campaign_id= '63d9566849fe7';
     obj.lp_campaign_key= 'kFBqPjzZw6JQxrc9pyvn';
     console.log('ADTWorkFlow---',obj);
+    return false;
     return leadspediaAPi(obj);
   }
 
@@ -635,7 +637,7 @@ $(".solar-cost-data .btn-main").click(function () {
     let queryString = ''
     for (key in obj){
       queryString += `${key}=${obj[key]}`
-      if(key != 'trusted_form_cert_id'){
+      if(key != 'lp_campaign_key'){
         queryString += '&'
       }
     }
