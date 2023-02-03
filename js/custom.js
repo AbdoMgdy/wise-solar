@@ -605,7 +605,8 @@ $(".solar-cost-data .btn-main").click(function () {
     }
 
     ADTWorkFlow(obj);
-    SolarFormWorkflow(obj);
+    let data = SolarFormWorkflow(obj);
+    return false;
 
     if (data && data.result) {
       // localStorage.clear();
@@ -614,20 +615,23 @@ $(".solar-cost-data .btn-main").click(function () {
   };
 
   const ADTWorkFlow = async(obj) => {
-    obj.lp_campaign_id= '63d9566849fe7',
-    obj.lp_campaign_key= 'kFBqPjzZw6JQxrc9pyvn',
+    obj.lp_campaign_id= '63d9566849fe7';
+    obj.lp_campaign_key= 'kFBqPjzZw6JQxrc9pyvn';
     console.log('ADTWorkFlow---',obj);
     return leadspediaAPi(obj);
   }
 
-  const SolarFormWorkflow = async(obj) => {
-    obj.lp_campaign_id= '63b6f613a6bd3',
-    obj.lp_campaign_key= 'y39HV4CJ6GFWwxq7vTmB',
-    console.log('SolarFormWorkflow---',obj);
-    return leadspediaAPi(obj);
+  const SolarFormWorkflow = async(data) => {
+    data.lp_campaign_id= '63b6f613a6bd3';
+    data.lp_campaign_key= 'y39HV4CJ6GFWwxq7vTmB';
+    console.log('SolarFormWorkflow---',data);
+    // return false;
+    return leadspediaAPi(data);
   }
 
-  const leadspediaAPi = async() => {
+  const leadspediaAPi = async(obj) => {
+    let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
+
     let queryString = ''
     for (key in obj){
       queryString += `${key}=${obj[key]}`
