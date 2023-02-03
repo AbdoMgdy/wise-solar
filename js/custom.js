@@ -351,8 +351,6 @@ $(".solar-cost-data .btn-main").click(function () {
   });
   
   let data = {
-    lp_campaign_id: "63b6f613a6bd3",
-    lp_campaign_key: "y39HV4CJ6GFWwxq7vTmB",
     lp_s1: "",
     lp_test: 1,
     lp_response: "JSON",
@@ -582,8 +580,6 @@ $(".solar-cost-data .btn-main").click(function () {
     let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
 
     let obj = {
-      lp_campaign_id: getLocalStorage.lp_campaign_id,
-      lp_campaign_key: getLocalStorage.lp_campaign_key,
       first_name: getLocalStorage.first_name,
       last_name: getLocalStorage.last_name,
       phone_home: getLocalStorage.phone_home,
@@ -608,6 +604,30 @@ $(".solar-cost-data .btn-main").click(function () {
       trusted_form_cert_id: getLocalStorage.trusted_form_cert_id
     }
 
+    ADTWorkFlow(obj);
+    SolarFormWorkflow(obj);
+
+    if (data && data.result) {
+      // localStorage.clear();
+      window.location.href = "quote-report.html";
+    }
+  };
+
+  const ADTWorkFlow = async() => {
+    obj.lp_campaign_id= '63d9566849fe7',
+    obj.lp_campaign_key= 'kFBqPjzZw6JQxrc9pyvn',
+    console.log('ADTWorkFlow---',obj);
+    return leadspediaAPi(obj);
+  }
+
+  const SolarFormWorkflow = async() => {
+    obj.lp_campaign_id= '63b6f613a6bd3',
+    obj.lp_campaign_key= 'y39HV4CJ6GFWwxq7vTmB',
+    console.log('SolarFormWorkflow---',obj);
+    return leadspediaAPi(obj);
+  }
+
+  const leadspediaAPi = async() => {
     let queryString = ''
     for (key in obj){
       queryString += `${key}=${obj[key]}`
@@ -618,7 +638,6 @@ $(".solar-cost-data .btn-main").click(function () {
 
     localStorage.setItem("power-solar-data", JSON.stringify(getLocalStorage));
 
-    //const URL = "https://api.usdirectautoinsurance.com/api/v1/power-solar/create";
     const URL = `https://leadgenmedia.leadspediatrack.com/post.do?${queryString}`;
 
     const options = {
@@ -628,12 +647,8 @@ $(".solar-cost-data .btn-main").click(function () {
     const response = await fetch(URL, options);
   
     const data = await response.json();
-
-    if (data && data.result) {
-      // localStorage.clear();
-      window.location.href = "quote-report.html";
-    }
-  };
+    return data;
+  }
   
   if (document.getElementById("successBtn")) {
     document.getElementById("successBtn").addEventListener("click", onSubmitData);
