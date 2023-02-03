@@ -613,14 +613,14 @@ $(".solar-cost-data .btn-main").click(function () {
     }
   };
 
-  const ADTWorkFlow = async() => {
+  const ADTWorkFlow = async(obj) => {
     obj.lp_campaign_id= '63d9566849fe7',
     obj.lp_campaign_key= 'kFBqPjzZw6JQxrc9pyvn',
     console.log('ADTWorkFlow---',obj);
     return leadspediaAPi(obj);
   }
 
-  const SolarFormWorkflow = async() => {
+  const SolarFormWorkflow = async(obj) => {
     obj.lp_campaign_id= '63b6f613a6bd3',
     obj.lp_campaign_key= 'y39HV4CJ6GFWwxq7vTmB',
     console.log('SolarFormWorkflow---',obj);
