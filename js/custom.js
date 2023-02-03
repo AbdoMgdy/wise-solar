@@ -18,21 +18,9 @@ $(window).on("load", function () {
 });
 
 const getGeo = async() => {
-  // $.ajax({
-  //   url: "https://geolocation-db.com/jsonp",
-  //   jsonpCallback: "callback",
-  //   dataType: "jsonp",
-  //   success: function(location) {
-  //     console.log('location----',location);
-  //     $('.city').html(location.state);
-  //     return location.state;
-  //   }
-  // });
-
   $.ajax({
     url: "https://ipinfo.io?token=28226e67806240",
     success: function(location) {
-      console.log('location---->>>>>',location);
       $('.city').html(location.region);
       return location.region;
     }
