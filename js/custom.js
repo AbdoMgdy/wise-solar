@@ -401,13 +401,6 @@ $(".solar-cost-data .btn-main").click(function () {
   getIP();
 
   function getIP() {
-    var trustedForm = $("#xxTrustedFormCertUrl_0").val();
-    if (trustedForm) {
-      let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
-      getLocalStorage["trusted_form_cert_id"] = trustedForm;
-      localStorage.setItem("power-solar-data", JSON.stringify(getLocalStorage));
-    }
-
     var range = $("#range").val();
     if (range) {
       let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
@@ -505,6 +498,14 @@ $(".solar-cost-data .btn-main").click(function () {
       let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
       getLocalStorage["zip_code"] = e.currentTarget.value;
       localStorage.setItem("power-solar-data", JSON.stringify(getLocalStorage));
+
+
+      var trustedForm = $("#xxTrustedFormCertUrl_0").val();
+      if (trustedForm) {
+        let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
+        getLocalStorage["trusted_form_cert_id"] = trustedForm;
+        localStorage.setItem("power-solar-data", JSON.stringify(getLocalStorage));
+      }
     });
   }
   
