@@ -619,7 +619,6 @@ $(".solar-cost-data .btn-main").click(function () {
     obj.lp_campaign_id= '63d9566849fe7';
     obj.lp_campaign_key= 'kFBqPjzZw6JQxrc9pyvn';
     console.log('ADTWorkFlow---',obj);
-    return false;
     return leadspediaAPi(obj);
   }
 
@@ -627,7 +626,6 @@ $(".solar-cost-data .btn-main").click(function () {
     data.lp_campaign_id= '63b6f613a6bd3';
     data.lp_campaign_key= 'y39HV4CJ6GFWwxq7vTmB';
     console.log('SolarFormWorkflow---',data);
-    // return false;
     return leadspediaAPi(data);
   }
 
