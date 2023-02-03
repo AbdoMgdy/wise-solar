@@ -601,7 +601,7 @@ $(".solar-cost-data .btn-main").click(function () {
       project_timeframe: getLocalStorage.project_timeframe,
       utility_provider: getLocalStorage.utility_provider,
       jornaya_lead_id: getLocalStorage.jornaya_lead_id,
-      trusted_form_cert_id: getLocalStorage.trusted_form_cert_id
+      trusted_form_cert_id: getLocalStorage.trusted_form_cert_id,
     }
 
     ADTWorkFlow(obj);
