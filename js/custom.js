@@ -194,11 +194,14 @@ $(".solar-cost-data .btn-main").click(function () {
       }
     }
     if($("#step6").hasClass('active')){
-      if ($(".firstNameInp").val() == '') {
+
+      var len = {min:2};
+
+      if ($(".firstNameInp").val() == '' || $(".firstNameInp").val().length < len.min) {
         $(".firstNameInp_errormsg").show();
         return false;
       }
-      if ($(".lastNameInp").val() == '') {
+      if ($(".lastNameInp").val() == '' || $(".lastNameInp").val().length < len.min) {
         $(".lastNameInp_errormsg").show();
         return false;
       }
