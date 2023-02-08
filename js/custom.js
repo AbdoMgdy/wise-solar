@@ -355,6 +355,7 @@ $(".solar-cost-data .btn-main").click(function () {
     lp_campaign_id: "12554",
     lp_supplier_id: "25597",
     lp_key: "nvxxt6nwidx65",
+    //lp_action: "test",
     email: "",
     zip_code: "",
     address: "",
@@ -550,7 +551,7 @@ $(".solar-cost-data .btn-main").click(function () {
         if (roof_shade == 'Full Sunlight') {
           getLocalStorage["roof_shade"] = "Not shaded";
         } else if (roof_shade == 'Some Shade' || roof_shade == 'Uncertain') {
-          getLocalStorage["roof_shade"] = "Some Shade";
+          getLocalStorage["roof_shade"] = "Slightly shaded";
         } else if (roof_shade == 'Severe Shade') {
           getLocalStorage["roof_shade"] = "Completely shaded";
         }
@@ -597,7 +598,7 @@ $(".solar-cost-data .btn-main").click(function () {
   const onSubmitData = async () => {
 
     let getLocalStorage = JSON.parse(localStorage.getItem("wise-solar-energy"));
-    //console.log('getLocalStorage submit', getLocalStorage);
+    console.log('getLocalStorage submit', getLocalStorage);
     $('#loading').show();
 
     const URL = "https://api.leadprosper.io/ingest";
@@ -613,6 +614,7 @@ $(".solar-cost-data .btn-main").click(function () {
     const response = await fetch(URL, options);
       
     const data = await response.json();
+    
     if (data && data.status) {
       // leadsPediaTrackPingApi();
       // localStorage.clear();
