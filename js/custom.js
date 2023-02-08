@@ -698,8 +698,8 @@ $(".solar-cost-data .btn-main").click(function () {
       let obj = {
         firstname: getLocalStorage.first_name,
         lastname: getLocalStorage.last_name,
-        email: getLocalStorage.email,
-        phone: getLocalStorage.phone,
+        email: getLocalStorage.email_address,
+        phone: getLocalStorage.phone_home,
         address: getLocalStorage.address.replaceAll(' ', '+'),
         zipcode: getLocalStorage.zip_code
       }
@@ -711,10 +711,11 @@ $(".solar-cost-data .btn-main").click(function () {
           queryString += '&'
         }
       }
-
+      
       let a = document.createElement('a');
       
-      a.setAttribute('href', `https://secure.rspcdn.com/xprr/red/PID/12049/SID/sid_here?${queryString}`)
+      a.setAttribute('href', `https://secure.rspcdn.com/xprr/red/PID/12159/SID/sid_here?${queryString}`)
+
       a.setAttribute('target', '_blank');
 
       a.click();
