@@ -1,4 +1,4 @@
-// localStorage.clear();
+//localStorage.clear();
 $(window).on("load", function () {
 
   var range = $("#range").attr("value");
@@ -97,12 +97,10 @@ $(".solar-cost-data .btn-main").click(function () {
         Btn.querySelector('.text').style.display = 'none';
         Btn.querySelector('.spinner-border').style.display = 'inline-block'
         
-        let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
-
-        console.log(getLocalStorage);
+        let getLocalStorage = JSON.parse(localStorage.getItem("wise-solar-energy"));
   
         const URL = "https://api.powersolarsavings.com/api/v1/power-solar/utility";
-        // const URL = "http://localhost:7000/api/v1/power-solar/utility";
+         //const URL = "http://localhost:7000/api/v1/power-solar/utility";
       
         const options = {
           method: "POST",
@@ -170,9 +168,9 @@ $(".solar-cost-data .btn-main").click(function () {
           document.querySelectorAll(".utilityProvider").forEach((ele) => {
             ele.addEventListener("click", (e) => {
               let selectedOption = e.currentTarget.innerText;
-              let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
+              let getLocalStorage = JSON.parse(localStorage.getItem("wise-solar-energy"));
               getLocalStorage["utility_provider"] = selectedOption;
-              localStorage.setItem("power-solar-data", JSON.stringify(getLocalStorage));
+              localStorage.setItem("wise-solar-energy", JSON.stringify(getLocalStorage));
             });
           });
         }
@@ -267,13 +265,13 @@ $(".solar-cost-data .btn-main").click(function () {
               var state = results[0].address_components[results[0].address_components.length - 5].short_name;
               var city = results[0].address_components[results[0].address_components.length - 6].long_name;
             }
-            let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
+            let getLocalStorage = JSON.parse(localStorage.getItem("wise-solar-energy"));
             
             getLocalStorage["state"] = state;
-            localStorage.setItem("power-solar-data", JSON.stringify(getLocalStorage));
+            localStorage.setItem("wise-solar-energy", JSON.stringify(getLocalStorage));
 
             getLocalStorage["city"] = city;
-            localStorage.setItem("power-solar-data", JSON.stringify(getLocalStorage));
+            localStorage.setItem("wise-solar-energy", JSON.stringify(getLocalStorage));
           }
         }
       });
@@ -339,9 +337,9 @@ $(".solar-cost-data .btn-main").click(function () {
         .replace(/^\s+|\s+$/g, ""); //remove leading and trailing whitespace
       input.val(txt);
   
-      let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
+      let getLocalStorage = JSON.parse(localStorage.getItem("wise-solar-energy"));
       getLocalStorage["address"] = txt.replace(/\s\s+/g, " ");
-      localStorage.setItem("power-solar-data", JSON.stringify(getLocalStorage));
+      localStorage.setItem("wise-solar-energy", JSON.stringify(getLocalStorage));
   
       dropdown.removeClass("open").removeClass("in");
     });
@@ -354,37 +352,34 @@ $(".solar-cost-data .btn-main").click(function () {
   });
   
   let data = {
-    lp_s1: "",
-    lp_test: 1,
-    lp_response: "JSON",
-    //lp_action: "test",
-    first_name: "",
-    last_name: "",
-    phone_home: "",
+    lp_campaign_id: "12554",
+    lp_supplier_id: "25597",
+    lp_key: "nvxxt6nwidx65",
+    email: "",
+    zip_code: "",
     address: "",
     city: "",
     state: "NY",
-    zip_code: "",
-    email_address: "",
-    ip_address: "",
-    credit: "Good",
-    roof_shade: "",
-    homeowner: "Yes",
-    landing_page_url: window.location.href,
     user_agent: navigator.userAgent,
-    monthy_bill: "",
+    ip_address: "",
+    first_name: "",
+    last_name: "",
+    phone: "",
+    sub_id1: "NAT",
+    homeowner: "Yes",
+    monthly_bill: "",
+    time_frame: "Immediate",
+    roof_shade: "",
+    landing_page: "lp_1",
     tcpa_text: "By clicking the View My Savings button, you authorize www.wisesolarenergy.com and up to 4 solar partners to call you and send you pre-recorded messages and text messages at the number you entered above, using an autodialer, with offers about their products or services, even if your phone number is on any national or state Do Not Call list. Message and data rates may apply. Your consent here is not based on a condition of purchase.",
-    tcpa_optin: "Yes",
-    utility_provider: "",
-    project_timeframe: "Immediate",
     jornaya_lead_id: "",
-    trusted_form_cert_id: "",
+    trusted_form_cert_url: "",
   };
   
-  let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
+  let getLocalStorage = JSON.parse(localStorage.getItem("wise-solar-energy"));
   
   if (!getLocalStorage) {
-    localStorage.setItem("power-solar-data", JSON.stringify(data));
+    localStorage.setItem("wise-solar-energy", JSON.stringify(data));
   }
 
   getIP();
@@ -392,15 +387,24 @@ $(".solar-cost-data .btn-main").click(function () {
   function getIP() {
     var range = $("#range").val();
     if (range) {
-      let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
-      getLocalStorage["monthy_bill"] = range;
-      localStorage.setItem("power-solar-data", JSON.stringify(getLocalStorage));
+      let getLocalStorage = JSON.parse(localStorage.getItem("wise-solar-energy"));
+      var monthly_bill= range;
+      if (monthly_bill < 100) {
+        getLocalStorage["monthly_bill"] = "Less than $100";
+      } else if (monthly_bill > 100 && monthly_bill < 200) {
+        getLocalStorage["monthly_bill"] = "From $100 to $200";
+      } else if (monthly_bill > 200 && monthly_bill < 300) {
+        getLocalStorage["monthly_bill"] = "From $200 to $300";
+      } else {
+        getLocalStorage["monthly_bill"] = "More than $300";
+      }   
+      localStorage.setItem("wise-solar-energy", JSON.stringify(getLocalStorage));
     }
 
     $.getJSON("https://api.ipify.org?format=json", function(data) {
-      let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
+      let getLocalStorage = JSON.parse(localStorage.getItem("wise-solar-energy"));
       getLocalStorage["ip_address"] = data.ip;
-      localStorage.setItem("power-solar-data", JSON.stringify(getLocalStorage));
+      localStorage.setItem("wise-solar-energy", JSON.stringify(getLocalStorage));
       return data.ip;
     });
   }
@@ -409,7 +413,7 @@ $(".solar-cost-data .btn-main").click(function () {
   if (document.querySelector('#zipCodeForm')) {
     document.querySelector('#zipCodeForm').addEventListener('submit', (e) => {
       e.preventDefault();
-      let form = e.currentTarget;
+      let form = e.currentTarget; 
       let formData = new FormData(form);
 
       if(formData.get('zip_code') == '' || formData.get('zip_code').length != 5){
@@ -444,9 +448,9 @@ $(".solar-cost-data .btn-main").click(function () {
         return ;
       }
 
-      let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
+      let getLocalStorage = JSON.parse(localStorage.getItem("wise-solar-energy"));
       getLocalStorage["address"] = formData.get('home_address');
-      localStorage.setItem("power-solar-data", JSON.stringify(getLocalStorage));
+      localStorage.setItem("wise-solar-energy", JSON.stringify(getLocalStorage));
       
       form.querySelector('a.next-step').click();
     })
@@ -474,41 +478,52 @@ $(".solar-cost-data .btn-main").click(function () {
   // ============= Validations =================
   if (document.querySelector(".homeSqFootRange")) {
     document.querySelector(".homeSqFootRange").addEventListener("input", (e) => {
-      let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
+      let getLocalStorage = JSON.parse(localStorage.getItem("wise-solar-energy"));
       getLocalStorage["homeSqFoot"] = e.currentTarget.value;
-      localStorage.setItem("power-solar-data", JSON.stringify(getLocalStorage));
+      localStorage.setItem("wise-solar-energy", JSON.stringify(getLocalStorage));
     });
   }
-  
+
   if (document.getElementById("zip_code")) {
     document.getElementById("zip_code").addEventListener("keyup", (e) => {
       let form = e.currentTarget.closest('form');
       form.querySelector('span').innerText = ''
-      let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
+      let getLocalStorage = JSON.parse(localStorage.getItem("wise-solar-energy"));
       getLocalStorage["zip_code"] = e.currentTarget.value;
-      localStorage.setItem("power-solar-data", JSON.stringify(getLocalStorage));
-
+      localStorage.setItem("wise-solar-energy", JSON.stringify(getLocalStorage));
 
       var trustedForm = $("#xxTrustedFormCertUrl_0").val();
       if (trustedForm) {
-        let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
-        getLocalStorage["trusted_form_cert_id"] = trustedForm;
-        localStorage.setItem("power-solar-data", JSON.stringify(getLocalStorage));
+        let getLocalStorage = JSON.parse(localStorage.getItem("wise-solar-energy"));
+        getLocalStorage["trusted_form_cert_url"] = trustedForm;
+        localStorage.setItem("wise-solar-energy", JSON.stringify(getLocalStorage));
       }
 
       var jornaya = $("#leadid_token").val();
       if (jornaya) {
-        let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
+        let getLocalStorage = JSON.parse(localStorage.getItem("wise-solar-energy"));
         getLocalStorage["jornaya_lead_id"] = jornaya;
-        localStorage.setItem("power-solar-data", JSON.stringify(getLocalStorage));
+        localStorage.setItem("wise-solar-energy", JSON.stringify(getLocalStorage));
       }
     });
   }
   
   if (document.querySelector(".avgBillRange")) {
     document.querySelector(".avgBillRange").addEventListener("input", (e) => {
-      let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
-      getLocalStorage["monthy_bill"] = e.currentTarget.value;
+      let getLocalStorage = JSON.parse(localStorage.getItem("wise-solar-energy"));
+      var monthly_bill= e.currentTarget.value;
+      if (monthly_bill < 100) {
+        getLocalStorage["monthly_bill"] = "Less than $100";
+      } else if (monthly_bill > 100 && monthly_bill < 200) {
+        getLocalStorage["monthly_bill"] = "From $100 to $200";
+      } else if (monthly_bill > 200 && monthly_bill < 300) {
+        getLocalStorage["monthly_bill"] = "From $200 to $300";
+      } else {
+        getLocalStorage["monthly_bill"] = "More than $300";
+      }  
+      localStorage.setItem("wise-solar-energy", JSON.stringify(getLocalStorage));
+
+      getLocalStorage["electric_bill"] = range;
       localStorage.setItem("power-solar-data", JSON.stringify(getLocalStorage));
     });
   }
@@ -517,9 +532,9 @@ $(".solar-cost-data .btn-main").click(function () {
     document.querySelectorAll(".utilityProvider").forEach((ele) => {
       ele.addEventListener("click", (e) => {
         let selectedOption = e.currentTarget.innerText;
-        let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
+        let getLocalStorage = JSON.parse(localStorage.getItem("wise-solar-energy"));
         getLocalStorage["utility_provider"] = selectedOption;
-        localStorage.setItem("power-solar-data", JSON.stringify(getLocalStorage));
+        localStorage.setItem("wise-solar-energy", JSON.stringify(getLocalStorage));
       });
     });
   }
@@ -528,129 +543,145 @@ $(".solar-cost-data .btn-main").click(function () {
     document.querySelectorAll(".roofSunlight").forEach((ele) => {
       ele.addEventListener("click", (e) => {
         let selectedOption = e.currentTarget.querySelector("h3").innerText;
-        let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
+        let getLocalStorage = JSON.parse(localStorage.getItem("wise-solar-energy"));
 
         var roof_shade= selectedOption;
         
         if (roof_shade == 'Full Sunlight') {
           getLocalStorage["roof_shade"] = "Not shaded";
-        } else if (roof_shade == 'Some Shade') {
+        } else if (roof_shade == 'Some Shade' || roof_shade == 'Uncertain') {
           getLocalStorage["roof_shade"] = "Some Shade";
-        } else if (roof_shade == 'Uncertain') {
-          getLocalStorage["roof_shade"] = "Uncertain";
         } else if (roof_shade == 'Severe Shade') {
-          getLocalStorage["roof_shade"] = "Severe Shade";
+          getLocalStorage["roof_shade"] = "Completely shaded";
         }
-        localStorage.setItem("power-solar-data", JSON.stringify(getLocalStorage));
+        localStorage.setItem("wise-solar-energy", JSON.stringify(getLocalStorage));
       });
     });
   }
   
   if (document.querySelector(".emailInp")) {
     document.querySelector(".emailInp").addEventListener("keyup", (e) => {
-      let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
-      getLocalStorage["email_address"] = e.currentTarget.value;
-      localStorage.setItem("power-solar-data", JSON.stringify(getLocalStorage));
+      let getLocalStorage = JSON.parse(localStorage.getItem("wise-solar-energy"));
+      getLocalStorage["email"] = e.currentTarget.value;
+      localStorage.setItem("wise-solar-energy", JSON.stringify(getLocalStorage));
     });
   }
   
   if (document.querySelector(".firstNameInp")) {
     document.querySelector(".firstNameInp").addEventListener("keyup", (e) => {
-      let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
+      let getLocalStorage = JSON.parse(localStorage.getItem("wise-solar-energy"));
       getLocalStorage["first_name"] = e.currentTarget.value;
-      localStorage.setItem("power-solar-data", JSON.stringify(getLocalStorage));
+      localStorage.setItem("wise-solar-energy", JSON.stringify(getLocalStorage));
     });
   }
   
   if (document.querySelector(".lastNameInp")) {
     document.querySelector(".lastNameInp").addEventListener("keyup", (e) => {
-      let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
+      let getLocalStorage = JSON.parse(localStorage.getItem("wise-solar-energy"));
       getLocalStorage["last_name"] = e.currentTarget.value;
-      localStorage.setItem("power-solar-data", JSON.stringify(getLocalStorage));
+      localStorage.setItem("wise-solar-energy", JSON.stringify(getLocalStorage));
     });
   }
   
   if (document.getElementById("phone")) {
     document.getElementById("phone").addEventListener("keyup", (e) => {
-      let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
-      getLocalStorage["phone_home"] = e.currentTarget.value;
-      localStorage.setItem("power-solar-data", JSON.stringify(getLocalStorage));
+      let number = e.currentTarget.value;
+      number = number.replace(/\D+/g, "");
+      let getLocalStorage = JSON.parse(localStorage.getItem("wise-solar-energy"));
+      // getLocalStorage["phone"] = e.currentTarget.value;
+      getLocalStorage["phone"] = number;
+      localStorage.setItem("wise-solar-energy", JSON.stringify(getLocalStorage));
     });
   }
   
   const onSubmitData = async () => {
 
-    let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
+    let getLocalStorage = JSON.parse(localStorage.getItem("wise-solar-energy"));
+    //console.log('getLocalStorage submit', getLocalStorage);
+    $('#loading').show();
 
-    let obj = {
-      first_name: getLocalStorage.first_name,
-      last_name: getLocalStorage.last_name,
-      phone_home: getLocalStorage.phone_home,
-      address: getLocalStorage.address,
-      city: getLocalStorage.city,
-      state: getLocalStorage.state,
-      zip_code: getLocalStorage.zip_code,
-      email_address: getLocalStorage.email_address,
-      monthy_bill: getLocalStorage.monthy_bill,
-      ip_address: getLocalStorage.ip_address,
-      credit: getLocalStorage.credit,
-      roof_shade: getLocalStorage.roof_shade,
-      homeowner: getLocalStorage.homeowner,
-      landing_page_url: getLocalStorage.landing_page_url,
-      user_agent: getLocalStorage.user_agent,
-      tcpa_text: getLocalStorage.tcpa_text,
-      tcpa_optin: getLocalStorage.tcpa_optin,
-      lp_response: "JSON",
-      project_timeframe: getLocalStorage.project_timeframe,
-      utility_provider: getLocalStorage.utility_provider,
-      jornaya_lead_id: getLocalStorage.jornaya_lead_id,
-      trusted_form_cert_id: getLocalStorage.trusted_form_cert_id,
-    }
+    const URL = "https://api.leadprosper.io/ingest";
+    //console.log('URL', URL);
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(getLocalStorage),
+    };
 
-    ADTWorkFlow(obj);
-    SolarFormWorkflow(obj);
-    // if (data && data.result) {
+    const response = await fetch(URL, options);
+      
+    const data = await response.json();
+    if (data && data.status) {
+      // leadsPediaTrackPingApi();
       // localStorage.clear();
-    window.location.href = "quote-report.html";
+      window.location.href = "quote-report.html";
+    }
+    // let obj = {
+    //   first_name: getLocalStorage.first_name,
+    //   last_name: getLocalStorage.last_name,
+    //   phone: getLocalStorage.phone,
+    //   address: getLocalStorage.address,
+    //   city: getLocalStorage.city,
+    //   state: getLocalStorage.state,
+    //   zip_code: getLocalStorage.zip_code,
+    //   email: getLocalStorage.email,
+    //   monthy_bill: getLocalStorage.monthy_bill,
+    //   ip_address: getLocalStorage.ip_address,
+    //   roof_shade: getLocalStorage.roof_shade,
+    //   homeowner: getLocalStorage.homeowner,
+    //   landing_page_url: getLocalStorage.landing_page_url,
+    //   user_agent: getLocalStorage.user_agent,
+    //   tcpa_text: getLocalStorage.tcpa_text,
+    //   tcpa_optin: getLocalStorage.tcpa_optin,
+    //   lp_response: "JSON",
+    //   project_timeframe: getLocalStorage.project_timeframe,
+    //   utility_provider: getLocalStorage.utility_provider,
+    //   jornaya_lead_id: getLocalStorage.jornaya_lead_id,
+    //   trusted_form_cert_id: getLocalStorage.trusted_form_cert_id,
     // }
+
+   
   };
 
-  const ADTWorkFlow = async(obj) => {
-    obj.lp_campaign_id= '63d9566849fe7';
-    obj.lp_campaign_key= 'kFBqPjzZw6JQxrc9pyvn';
-    return leadspediaAPi(obj);
-  }
+  // const ADTWorkFlow = async(obj) => {
+  //   obj.lp_campaign_id= '63d9566849fe7';
+  //   obj.lp_campaign_key= 'kFBqPjzZw6JQxrc9pyvn';
+  //   return leadspediaAPi(obj);
+  // }
 
-  const SolarFormWorkflow = async(data) => {
-    data.lp_campaign_id= '63b6f613a6bd3';
-    data.lp_campaign_key= 'y39HV4CJ6GFWwxq7vTmB';
-    return leadspediaAPi(data);
-  }
+  // const SolarFormWorkflow = async(data) => {
+  //   data.lp_campaign_id= '63b6f613a6bd3';
+  //   data.lp_campaign_key= 'y39HV4CJ6GFWwxq7vTmB';
+  //   return leadspediaAPi(data);
+  // }
 
-  const leadspediaAPi = async(obj) => {
-    let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
+  // const leadspediaAPi = async(obj) => {
+  //   let getLocalStorage = JSON.parse(localStorage.getItem("wise-solar-energy"));
 
-    let queryString = ''
-    for (key in obj){
-      queryString += `${key}=${obj[key]}`
-      if(key != 'lp_campaign_key'){
-        queryString += '&'
-      }
-    }
+  //   let queryString = ''
+  //   for (key in obj){
+  //     queryString += `${key}=${obj[key]}`
+  //     if(key != 'lp_campaign_key'){
+  //       queryString += '&'
+  //     }
+  //   }
 
-    localStorage.setItem("power-solar-data", JSON.stringify(getLocalStorage));
+  //   localStorage.setItem("wise-solar-energy", JSON.stringify(getLocalStorage));
 
-    const URL = `https://leadgenmedia.leadspediatrack.com/post.do?${queryString}`;
+  //   const URL = `https://leadgenmedia.leadspediatrack.com/post.do?${queryString}`;
 
-    const options = {
-      method: "GET",
-    };
+  //   const options = {
+  //     method: "GET",
+  //   };
   
-    const response = await fetch(URL, options);
+  //   const response = await fetch(URL, options);
   
-    const data = await response.json();
-    return data;
-  }
+  //   const data = await response.json();
+  //   return data;
+  // }
+
   
   if (document.getElementById("successBtn")) {
     document.getElementById("successBtn").addEventListener("click", onSubmitData);
@@ -660,13 +691,13 @@ $(".solar-cost-data .btn-main").click(function () {
     document.querySelector('#speciallink').addEventListener('click', (e) => {
       e.preventDefault();
 
-      let getLocalStorage = JSON.parse(localStorage.getItem("power-solar-data"));
+      let getLocalStorage = JSON.parse(localStorage.getItem("wise-solar-energy"));
       
       let obj = {
         firstname: getLocalStorage.first_name,
         lastname: getLocalStorage.last_name,
-        email: getLocalStorage.email_address,
-        phone: getLocalStorage.phone_home,
+        email: getLocalStorage.email,
+        phone: getLocalStorage.phone,
         address: getLocalStorage.address.replaceAll(' ', '+'),
         zipcode: getLocalStorage.zip_code
       }
