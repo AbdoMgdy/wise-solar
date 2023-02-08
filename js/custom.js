@@ -366,7 +366,7 @@ $(".solar-cost-data .btn-main").click(function () {
     first_name: "",
     last_name: "",
     phone: "",
-    sub_id1: "NAT",
+    sub_id1: "YT",
     homeowner: "Yes",
     monthly_bill: "",
     time_frame: "Immediate",
