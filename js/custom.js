@@ -247,7 +247,6 @@ $(".solar-cost-data .btn-main").click(function () {
     google.maps.event.addListener(autocompleteAddress, 'place_changed', function () {
       let getLocalStorage = JSON.parse(localStorage.getItem("wise-solar-energy"));
       var place = autocompleteAddress.getPlace();
-      console.log('place----',place);
 
       var latitude = place.geometry.location.lat();
       var longitude = place.geometry.location.lng();
@@ -279,7 +278,6 @@ $(".solar-cost-data .btn-main").click(function () {
           }
         }
       }
-      console.log('getLocalStorage----',getLocalStorage);
     });
   }
 
