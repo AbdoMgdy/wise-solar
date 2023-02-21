@@ -281,51 +281,7 @@ $(".solar-cost-data .btn-main").click(function () {
     });
   }
 
-  // function initAutocomplete() {
-  //   const autocompleteHotels = new google.maps.places.Autocomplete(
-  //      (document.getElementById('pac-input')),
-  //      {
-  //         types: ['geocode']
-  //      }
-  //   );
-
-  //   google.maps.event.addListener(autocompleteHotels, 'place_changed', function () {
-  //     var place = autocompleteHotels.getPlace();
-  //     var latitude = place.geometry.location.lat();
-  //     var longitude = place.geometry.location.lng();
-  //     var latlng = new google.maps.LatLng(latitude, longitude);
-
-  //     var geocoder = geocoder = new google.maps.Geocoder();
-       
-  //     geocoder.geocode({ 'latLng': latlng }, function (results, status) {
-  //       if (status == google.maps.GeocoderStatus.OK) {
-  //         if (results[0]) {
-  //           var address = results[0].formatted_address;
-  //           var pin = results[0].address_components[results[0].address_components.length - 1].long_name;
-  //           var country = results[0].address_components[results[0].address_components.length - 2].long_name;
-  //           var state = results[0].address_components[results[0].address_components.length - 3].short_name;
-  //           var city = results[0].address_components[results[0].address_components.length - 4].long_name;
-            
-  //           if (state == 'US') {
-  //             var state = results[0].address_components[results[0].address_components.length - 4].short_name;
-  //             var city = results[0].address_components[results[0].address_components.length - 5].long_name;
-  //           }
-  //           if (state == 'US') {
-  //             var state = results[0].address_components[results[0].address_components.length - 5].short_name;
-  //             var city = results[0].address_components[results[0].address_components.length - 6].long_name;
-  //           }
-  //           let getLocalStorage = JSON.parse(localStorage.getItem("wise-solar-energy"));
-            
-  //           getLocalStorage["state"] = state;
-  //           localStorage.setItem("wise-solar-energy", JSON.stringify(getLocalStorage));
-
-  //           getLocalStorage["city"] = city;
-  //           localStorage.setItem("wise-solar-energy", JSON.stringify(getLocalStorage));
-  //         }
-  //       }
-  //     });
-  //   });
-  // }
+  window.initAutocomplete = initAutocomplete;
   
   function createAuto(i, elem) {
     var input = $(elem);
