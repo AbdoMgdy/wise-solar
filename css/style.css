@@ -1130,33 +1130,46 @@ input[type="range"]::-moz-range-thumb {
     color: #fff;
 }
 
-
 .list-disc li{
     list-style-type: disc;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .prog-title {
-    font-size: 34px !important;
+    font-size: 24px !important;
     font-weight: 700 !important;
+}
 
+.page-title h2 {
+    font-size: 22px !important;
 }
 
 .prog-btn {
-    padding: 14px 180px;
-    font-size: 30px;
+    padding: 8px 170px;
+    font-size: 22px;
     font-weight: 900;
 }
 
+.object-contain {
+    max-width: 70%;
+}
+
 .qualify-text {
-
-}
-
-.qualify-text:hover {
+    font-size: 16px !important;
     text-decoration: underline;
+    color: #06aeef !important;
+    cursor: pointer;
 }
+
+/* .qualify-text:hover {
+    text-decoration: underline;
+} */
 
 .hidden-text {
     font-size: 14px !important; 
     display: none;
+}
+
+.solar-saver {
+    padding: 20px 40px !important;
 }
