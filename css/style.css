@@ -1129,3 +1129,47 @@ input[type="range"]::-moz-range-thumb {
     border: 1px solid #078041;
     color: #fff;
 }
+
+.list-disc li{
+    list-style-type: disc;
+    font-size: 16px;
+}
+
+.prog-title {
+    font-size: 24px !important;
+    font-weight: 700 !important;
+}
+
+.page-title h2 {
+    font-size: 22px !important;
+}
+
+.prog-btn {
+    padding: 8px 170px;
+    font-size: 22px;
+    font-weight: 900;
+}
+
+.object-contain {
+    max-width: 70%;
+}
+
+.qualify-text {
+    font-size: 16px !important;
+    text-decoration: underline;
+    color: #06aeef !important;
+    cursor: pointer;
+}
+
+/* .qualify-text:hover {
+    text-decoration: underline;
+} */
+
+.hidden-text {
+    font-size: 14px !important; 
+    display: none;
+}
+
+.solar-saver {
+    padding: 20px 40px !important;
+}

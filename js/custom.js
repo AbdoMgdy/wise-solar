@@ -728,3 +728,6 @@ $(".solar-cost-data .btn-main").click(function () {
     })
   }
   
+  $(".qualify-text").click(function(){
+    $(".hidden-text").toggle(100);
+  });
