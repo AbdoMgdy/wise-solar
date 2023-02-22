@@ -1173,3 +1173,9 @@ input[type="range"]::-moz-range-thumb {
 .solar-saver {
     padding: 20px 40px !important;
 }
+
+@media only screen and (max-width: 600px) {
+    .prog-btn {
+        padding: 10px;
+    }
+}
