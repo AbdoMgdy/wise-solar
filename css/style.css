@@ -1129,3 +1129,34 @@ input[type="range"]::-moz-range-thumb {
     border: 1px solid #078041;
     color: #fff;
 }
+
+
+.list-disc li{
+    list-style-type: disc;
+    font-size: 18px;
+}
+
+.prog-title {
+    font-size: 34px !important;
+    font-weight: 700 !important;
+
+}
+
+.prog-btn {
+    padding: 14px 180px;
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.qualify-text {
+
+}
+
+.qualify-text:hover {
+    text-decoration: underline;
+}
+
+.hidden-text {
+    font-size: 14px !important; 
+    display: none;
+}
