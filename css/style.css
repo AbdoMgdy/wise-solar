@@ -1135,35 +1135,32 @@ input[type="range"]::-moz-range-thumb {
     font-size: 16px;
 }
 
+
 .prog-title {
-    font-size: 24px !important;
+    font-size: 36px !important;
     font-weight: 700 !important;
 }
 
 .page-title h2 {
-    font-size: 22px !important;
+    font-size: 32px !important;
 }
 
 .prog-btn {
     padding: 8px 170px;
-    font-size: 22px;
+    font-size: 34px;
     font-weight: 900;
 }
 
 .object-contain {
-    max-width: 70%;
+    max-width: 80%;
 }
 
 .qualify-text {
-    font-size: 16px !important;
+    font-size: 18px !important;
     text-decoration: underline;
     color: #06aeef !important;
     cursor: pointer;
 }
-
-/* .qualify-text:hover {
-    text-decoration: underline;
-} */
 
 .hidden-text {
     font-size: 14px !important; 
@@ -1176,6 +1173,18 @@ input[type="range"]::-moz-range-thumb {
 
 @media only screen and (max-width: 600px) {
     .prog-btn {
-        padding: 10px;
+        padding: 10px 64px;
+    }
+
+    .page-title h2 {
+        font-size: 32px !important;
+    }
+
+    .solar-saver {
+        padding: 20px 30px !important;
+    }
+
+    .list-disc li {
+        margin: 0 30px;
     }
 }
