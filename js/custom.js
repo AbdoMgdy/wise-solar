@@ -149,7 +149,7 @@ $(".solar-cost-data .btn-main").click(function () {
         data.forEach(utility => {
           utilities += `<div class="col-sm-6 col-12">
               <div class="form-group">
-                <a href="javascript:void(0);" class="btn-main next-tep w-100 utilityProvider">${utility.utility_name}</a>
+                <a href="javascript:void(0);" class="btn-main next-tep w-100 utilityProvider">${utility.name}</a>
               </div>
           </div>`
         })
