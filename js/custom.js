@@ -1,4 +1,18 @@
 //localStorage.clear();
+const utility = async (zipCode) => {
+  const URL = "https://apis.wattbuy.com/v3/electricity/info?zip="+zipCode;
+  const options = {
+    method: "GET",
+    headers: {
+      "accept": "application/json",
+      "x-api-key": "AqXT2UqxbQ1fZgwQp9Tqf6wSmiSDDvJhaZwYMiVZ"
+    },
+  };
+  const response = await fetch(URL, options);
+  const data = await response.json();
+  return data.utility_info;
+};
+
 $(window).on("load", function () {
 
   var range = $("#range").attr("value");
@@ -98,23 +112,25 @@ $(".solar-cost-data .btn-main").click(function () {
         Btn.querySelector('.spinner-border').style.display = 'inline-block'
         
         let getLocalStorage = JSON.parse(localStorage.getItem("wise-solar-energy"));
-  
-        const URL = "https://api.powersolarsavings.com/api/v1/power-solar/utility";
-         //const URL = "http://localhost:7000/api/v1/power-solar/utility";
-      
-        const options = {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({zip: getLocalStorage.zip_code}),
-        };
-      
-        const response = await fetch(URL, options);
-      
-        const data = await response.json();
 
-        if(!data || data.data.length <= 0){
+        const data = await utility(getLocalStorage.zip_code);
+  
+        // const URL = "https://api.powersolarsavings.com/api/v1/power-solar/utility";
+        //  //const URL = "http://localhost:7000/api/v1/power-solar/utility";
+      
+        // const options = {
+        //   method: "POST",
+        //   headers: {
+        //     "Content-Type": "application/json",
+        //   },
+        //   body: JSON.stringify({zip: getLocalStorage.zip_code}),
+        // };
+      
+        // const response = await fetch(URL, options);
+      
+        // const data = await response.json();
+
+        if(!data || data.length <= 0){
           document.querySelector('[data-zip-error]').style.display = 'block'
           document.querySelector('[data-zip-error] + div').style.display = 'none'
           
@@ -130,7 +146,7 @@ $(".solar-cost-data .btn-main").click(function () {
         }
 
         let utilities = '';
-        data.data.forEach(utility => {
+        data.forEach(utility => {
           utilities += `<div class="col-sm-6 col-12">
               <div class="form-group">
                 <a href="javascript:void(0);" class="btn-main next-tep w-100 utilityProvider">${utility.utility_name}</a>
