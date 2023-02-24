@@ -311,9 +311,9 @@
                                                                   <div class="col-sm-12 col-12">
                                                                      <div class="input-group">
                                                                         <div class="input-group-prepend left_border">
-                                                                          + 1
+                                                                         <b>+ 1</b>
                                                                         </div>
-                                                                        <input id="phone" type="tel" oninput="handleInput(event)" class="form-control phoneNumber right_border" placeholder="Enter Phone Number" required>
+                                                                        <input id="phone" type="tel" oninput="handleInput(event)" onkeypress="return onlyNumberKey(event)" class="form-control phoneNumber right_border" placeholder="Enter Phone Number" required>
                                                                         <span class="error-msg phoneNumber_errormsg" style="color: white; display: none;">Please Enter a Valid US Phone Number</span>
                                                                      </div>
                                                                      <!-- <div class="form-group">

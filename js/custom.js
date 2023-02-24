@@ -484,6 +484,16 @@ $(".solar-cost-data .btn-main").click(function () {
     // elment.style.display = 'none';
   }
 
+  function onlyNumberKey(evt) {      
+    var currentInput = evt.target.value;
+    var ASCIICode = (evt.which) ? evt.which : evt.keyCode;
+    if (ASCIICode === 49 && currentInput.length <= 1) {
+      return false;
+    } else if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57)) {
+      return false;
+    }
+    return true;
+}
 
   function isNumberKey(evt) {
       var charCode = (evt.which) ? evt.which : evt.keyCode
