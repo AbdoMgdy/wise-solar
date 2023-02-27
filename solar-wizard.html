@@ -23,6 +23,15 @@
          })(window,document,'script','dataLayer','GTM-5KS6ZNQ');
       </script>
       <!-- End Google Tag Manager -->
+
+      <style>
+         .lead_text {
+            margin-top: 1rem;
+            font-size: 8px;
+            line-height: 1.5;
+            margin: 8px 20px;
+         }
+      </style>
    </head>
    <body>
       <!-- Google Tag Manager (noscript) -->
@@ -299,47 +308,54 @@
                                                    </div>
                                                 </div>
                                                 <div class="tab-pane tab-pane" role="tabpanel" id="step7">
-                                                   <div class="row">
-                                                      <div class="col-12">
-                                                         <div class="wizard__box">
-                                                            <div class="page-title text-center mb-3">
-                                                               <h2>Final Step!</h2>
-                                                               <p>Complete The Final Step To See Savings!</p>
-                                                            </div>
-                                                            <div class="wizard__main mx-680">
-                                                               <div class="row justify-content-center">
-                                                                  <div class="col-sm-12 col-12">
-                                                                     <div class="input-group">
-                                                                        <div class="input-group-prepend left_border">
-                                                                         <b>+ 1</b>
+                                                   <form id="phoneNumberForm">
+                                                      <div class="row">
+                                                         <div class="col-12">
+                                                            <div class="wizard__box">
+                                                               <div class="page-title text-center mb-3">
+                                                                  <h2>Final Step!</h2>
+                                                                  <p>Complete The Final Step To See Savings!</p>
+                                                               </div>
+                                                               <div class="wizard__main mx-680">
+                                                                  <div class="row justify-content-center">
+                                                                     <div class="col-sm-12 col-12">
+                                                                        <div class="input-group">
+                                                                           <div class="input-group-prepend left_border">
+                                                                           <b>+ 1</b>
+                                                                           </div>
+                                                                           <input id="phone" name="phone" type="tel" oninput="handleInput(event)" onkeypress="return onlyNumberKey(event)" class="form-control phoneNumber right_border" placeholder="Enter Phone Number" required>
+                                                                           <input id="leadid_token" name="universal_leadid" type="hidden" value=""/>
+
+                                                                           <input type="hidden" name="xxTrustedFormCertUrl" id="xxTrustedFormCertUrl_0" value="https://cert.trustedform.com/454a35b802f3e7b63ffabb4efedb7c6ebe67886c">
+
+                                                                           <input type="hidden" name="xxTrustedFormPingUrl" id="xxTrustedFormPingUrl_0" value="https://ping.trustedform.com/0.HJDqajg8vVF20hwiDBJ92kct5idepgBM4vHylmh43kShfWSZKwm8HI37KqPToi0y3dhTIQ3N.uOjUbzs7aKNUWivkGh7I9Q.50hgmcLFsDabNx1wtZZPdQ">
                                                                         </div>
-                                                                        <input id="phone" type="tel" oninput="handleInput(event)" onkeypress="return onlyNumberKey(event)" class="form-control phoneNumber right_border" placeholder="Enter Phone Number" required>
+
                                                                         <span class="error-msg phoneNumber_errormsg" style="color: white; display: none;">Please Enter a Valid US Phone Number</span>
+                                                                        
                                                                      </div>
-                                                                     <!-- <div class="form-group">
-                                                                        <input id="phone" type="tel" oninput="handleInput(event)" class="form-control phoneNumber" placeholder="Enter Phone Number">
-                                                                        <span class="error-msg phoneNumber_errormsg" style="color: white; display: none;">Please Enter a Valid US Phone Number</span>
-                                                                     </div> -->
-                                                                  </div>
-                                                                  <div class="col-sm-12 col-12">
-                                                                     <p style="margin-top: 1rem; font-size: 8px; line-height: 1.5;
-                                                                     margin: 10px 20px;">By clicking the "View My Savings" button, you authorize www.wisesolarenergy.com and up to <a href="./marketingPartners.html" target="_blank" tabindex="0" style="color:#7b7b7c;text-decoration:underline">4 solar partners</a> to call you and send you pre-recorded messages and text messages at the number you entered above, using an autodialer, with offers about their products or services, even if your phone number is on any national or state "Do Not Call" list. Message and data rates may apply. Your consent here is not based on a condition of purchase. You agree to the <a style="color:#7b7b7c;" href="terms.html">Terms of Use</a> and <a style="color:#7b7b7c;" href="privacy.html">Privacy Policy</a>.
-                                                                     </p>
-                                                                  </div>
-                                                                  <div class="col-md-12 col-sm-12 col-12">
-                                                                     <div class="form-group picker text-center mb-4" style="margin-top: 0;">
-                                                                        <a href="javascript:void(0);" class="btn-main next-step" >View My Savings</a>
-                                                                        <!-- <a href="quote-report.html" class="btn-main next-step">Next</a> -->
+                                                                     <div class="col-sm-12 col-12">
+                                                                        <label for="leadid_tcpa_disclosure" class="lead_text">
+                                                                           By clicking the "View My Savings" button, you authorize www.wisesolarenergy.com and up to <a href="./marketingPartners.html" target="_blank" tabindex="0" style="color:#7b7b7c;text-decoration:underline">4 solar partners</a> to call you and send you pre-recorded messages and text messages at the number you entered above, using an autodialer, with offers about their products or services, even if your phone number is on any national or state "Do Not Call" list. Message and data rates may apply. Your consent here is not based on a condition of purchase. You agree to the <a style="color:#7b7b7c;" href="terms.html">Terms of Use</a> and <a style="color:#7b7b7c;" href="privacy.html">Privacy Policy</a>.
+                                                                        </label>                                                                        
+
+                                                                        <input type="hidden" id="leadid_tcpa_disclosure" name="tcpa" tabindex="0" value='By clicking the "View My Savings" button, you authorize www.wisesolarenergy.com and up to 4 solar partners to call you and send you pre-recorded messages and text messages at the number you entered above, using an autodialer, with offers about their products or services, even if your phone number is on any national or state "Do Not Call" list. Message and data rates may apply. Your consent here is not based on a condition of purchase. You agree to the Terms of Use and Privacy Policy.'>
+                                                                     </div>
+                                                                     <div class="col-md-12 col-sm-12 col-12">
+                                                                        <div class="form-group picker text-center mb-4" style="margin-top: 0;">
+                                                                           <button class="btn-main" >View My Savings</button>
+                                                                           <!-- <a href="quote-report.html" class="btn-main next-step">Next</a> -->
+                                                                        </div>
                                                                      </div>
                                                                   </div>
                                                                </div>
                                                             </div>
-                                                         </div>
-                                                         <div class="wizard-back-btn text-center mt-4">
-                                                            <span class="prev-step"><i class="fas fa-chevron-left"></i> Back</span>
+                                                            <div class="wizard-back-btn text-center mt-4">
+                                                               <span class="prev-step"><i class="fas fa-chevron-left"></i> Back</span>
+                                                            </div>
                                                          </div>
                                                       </div>
-                                                   </div>
+                                                   </form>
                                                 </div>
                                                 <div class="clearfix"></div>
                                              </div>
@@ -419,19 +435,36 @@
       <script src="js/bootstrap.min.js"></script>
       <script src="js/owl.carousel.min.js"></script>
       <script src="js/custom.js"></script>
-      <script id="LeadiDscript" type="text/javascript">
-         (function() {
-         var s = document.createElement('script');
-         s.id = 'LeadiDscript_campaign';
-         s.type = 'text/javascript';
-         s.async = true;
-         s.src = '//create.lidstatic.com/campaign/ee4ab11e-f8d5-489a-90bb-630a68af2f5b.js?snippet_version=2';
-         var LeadiDscript = document.getElementById('LeadiDscript');
-         LeadiDscript.parentNode.insertBefore(s, LeadiDscript);
-         })();
-      </script>
-      <noscript><img src='//create.leadid.com/noscript.gif?lac=997AF13F-C149-B106-54A8-4676CF210163&lck=ee4ab11e-f8d5-489a-90bb-630a68af2f5b&snippet_version=2' /></noscript>
+      
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASQy-lj_qEU3g4G3D-J1jW00jagKYq91M&libraries=places&callback=initAutocomplete"
       async defer></script>
+
+      <script id="LeadiDscript" type="text/javascript">
+         (function() {
+            var s = document.createElement('script');
+            s.id = 'LeadiDscript_campaign';
+            s.type = 'text/javascript';
+            s.async = true;
+            s.src = 'https://create.lidstatic.com/campaign/093ae24d-3c6c-1874-691e-bbfd5eac0c88.js?snippet_version=2';
+            var LeadiDscript = document.getElementById('LeadiDscript');
+            LeadiDscript.parentNode.insertBefore(s, LeadiDscript);
+         })();
+      </script>
+      <noscript><img src='https://create.leadid.com/noscript.gif?lac=997AF13F-C149-B106-54A8-4676CF210163&lck=093ae24d-3c6c-1874-691e-bbfd5eac0c88&snippet_version=2' /></noscript>
+
+      <!-- TrustedForm -->
+      <script type="text/javascript">
+         (function() {
+         var tf = document.createElement('script');
+         tf.type = 'text/javascript'; tf.async = true;
+         tf.src = ("https:" == document.location.protocol ? 'https' : 'http') + "://api.trustedform.com/trustedform.js?field=xxTrustedFormCertUrl&ping_field=xxTrustedFormPingUrl&l=" + new Date().getTime() + Math.random();
+         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(tf, s);
+         })();
+      </script>
+      <noscript>
+      <img src="https://api.trustedform.com/ns.gif" />
+      </noscript>
+      <!-- End TrustedForm -->
+
    </body>
 </html>

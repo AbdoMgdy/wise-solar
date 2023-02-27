@@ -449,6 +449,36 @@ $(".solar-cost-data .btn-main").click(function () {
     })
   }
 
+  if(document.querySelector('#phoneNumberForm')){
+    document.querySelector('#phoneNumberForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      let form = e.currentTarget;
+      let formData = new FormData(form);
+
+      var trustedForm = $("#xxTrustedFormCertUrl_0").val(); 
+      if (trustedForm) {
+        let getLocalStorage = JSON.parse(localStorage.getItem("wise-solar-energy"));
+        console.log('trustedForm000',trustedForm);
+        getLocalStorage["trusted_form_cert_url"] = trustedForm;
+        localStorage.setItem("wise-solar-energy", JSON.stringify(getLocalStorage));
+      }
+      
+      var jornaya = $("#leadid_token").val();
+      if (jornaya) {
+        let getLocalStorage = JSON.parse(localStorage.getItem("wise-solar-energy"));
+        getLocalStorage["jornaya_lead_id"] = jornaya;
+        localStorage.setItem("wise-solar-energy", JSON.stringify(getLocalStorage));
+      }
+
+      if(formData.get('phone') == '' || formData.get('phone').length < 13 || formData.get('phone').length > 14){
+        $(".phoneNumber_errormsg").show();
+        return ; 
+      }else{
+        onSubmitData();
+      }
+    })
+  }
+
   if(document.querySelector('#pac-input')) {
     document.querySelector('#pac-input').addEventListener('input', (e) => {
       let element = e.currentTarget;
@@ -627,13 +657,11 @@ $(".solar-cost-data .btn-main").click(function () {
   }
   
   const onSubmitData = async () => {
-
     let getLocalStorage = JSON.parse(localStorage.getItem("wise-solar-energy"));
-    console.log('getLocalStorage submit', getLocalStorage);
     $('#loading').show();
 
     const URL = "https://api.leadprosper.io/ingest";
-    //console.log('URL', URL);
+    
     const options = {
       method: "POST",
       headers: {
